@@ -6,12 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.kaderkayaarslan.kisileruygulamasi.R
+import com.kaderkayaarslan.kisileruygulamasi.databinding.FragmentKisiKayitBinding
 
 
 class KisiKayitFragment : Fragment() {
+    private lateinit var tasarim:FragmentKisiKayitBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_kisi_kayit, container, false)
+        tasarim = FragmentKisiKayitBinding.inflate(inflater, container, false)
+
+        return tasarim.root
     }
 
 
