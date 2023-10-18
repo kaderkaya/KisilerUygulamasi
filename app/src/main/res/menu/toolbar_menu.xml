@@ -4,7 +4,6 @@
 
     <item
         android:id="@+id/action_ara"
-
         android:icon="@drawable/ara_resim"
         android:title="Ara"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
