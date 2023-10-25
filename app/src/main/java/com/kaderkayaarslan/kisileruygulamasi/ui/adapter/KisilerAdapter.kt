@@ -4,9 +4,11 @@ import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import com.kaderkayaarslan.kisileruygulamasi.R
 import com.kaderkayaarslan.kisileruygulamasi.data.entity.Kişiler
 import com.kaderkayaarslan.kisileruygulamasi.databinding.CardTasarimBinding
 import com.kaderkayaarslan.kisileruygulamasi.databinding.FragmentAnasayfaBinding
@@ -24,7 +26,7 @@ class KisilerAdapter(var mContext: Context,var kisilerListesi:List<Kişiler>)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardTasarimTutucu {
        val layoutInflater = LayoutInflater.from(mContext)
-       val tasarim = CardTasarimBinding.inflate(layoutInflater, parent, false)
+       val tasarim:CardTasarimBinding = DataBindingUtil.inflate(layoutInflater,R.layout.card_tasarim, parent, false)
         return CardTasarimTutucu(tasarim)
 
     }
@@ -32,7 +34,7 @@ class KisilerAdapter(var mContext: Context,var kisilerListesi:List<Kişiler>)
     override fun onBindViewHolder(holder: CardTasarimTutucu, position: Int) {
         val kisi = kisilerListesi.get(position)
        val t = holder.tasarim
-        t.textViewKisiBilgi.text = "${kisi.kisi_ad} - ${kisi.kisi_tel}"
+        t.kisiNesnesi = kisi
         t.satirCard.setOnClickListener {
             val gecis = AnasayfaFragmentDirections.kisiDetayGecis(kisi = kisi)
             Navigation.findNavController(it).navigate(gecis)
