@@ -30,6 +30,7 @@ class KisilerAdapter(var mContext: Context,var kisilerListesi:List<Kişiler>)
         return CardTasarimTutucu(tasarim)
 
 
+
     }
 
     override fun onBindViewHolder(holder: CardTasarimTutucu, position: Int) {
