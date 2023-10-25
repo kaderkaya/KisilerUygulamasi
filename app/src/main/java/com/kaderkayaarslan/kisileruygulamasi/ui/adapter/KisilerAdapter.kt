@@ -29,6 +29,7 @@ class KisilerAdapter(var mContext: Context,var kisilerListesi:List<Kişiler>)
        val tasarim:CardTasarimBinding = DataBindingUtil.inflate(layoutInflater,R.layout.card_tasarim, parent, false)
         return CardTasarimTutucu(tasarim)
 
+
     }
 
     override fun onBindViewHolder(holder: CardTasarimTutucu, position: Int) {
