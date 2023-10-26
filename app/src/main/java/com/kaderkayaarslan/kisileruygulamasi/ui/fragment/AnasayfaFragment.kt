@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,10 +16,13 @@ import com.kaderkayaarslan.kisileruygulamasi.R
 import com.kaderkayaarslan.kisileruygulamasi.data.entity.Kişiler
 import com.kaderkayaarslan.kisileruygulamasi.databinding.FragmentAnasayfaBinding
 import com.kaderkayaarslan.kisileruygulamasi.ui.adapter.KisilerAdapter
+import com.kaderkayaarslan.kisileruygulamasi.ui.viewmodel.AnasayfaViewModel
+import com.kaderkayaarslan.kisileruygulamasi.ui.viewmodel.KisiKayitViewModel
 
 
 class AnasayfaFragment : Fragment(),SearchView.OnQueryTextListener {
     private lateinit var tasarim:FragmentAnasayfaBinding
+    private lateinit var viewModel: AnasayfaViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       tasarim = DataBindingUtil.inflate(inflater,R.layout.fragment_anasayfa,container, false)
@@ -26,16 +30,11 @@ class AnasayfaFragment : Fragment(),SearchView.OnQueryTextListener {
         tasarim.anasayfaToolbarBaslik ="Kişiler"
         (activity as AppCompatActivity).setSupportActionBar(tasarim.toolbarAnasayfa)
 
-        val kisilerListesi = ArrayList<Kişiler>()
-        val k1 = Kişiler(1,"Ahmet","1111")
-        val k2 = Kişiler(2,"Zeynep","2222")
-        val k3 = Kişiler(3,"Beyza","3333")
-        kisilerListesi.add(k1)
-        kisilerListesi.add(k2)
-        kisilerListesi.add(k3)
+      viewModel.kisilerListesi.observe(viewLifecycleOwner){
+          val adapter = KisilerAdapter(requireContext(),it,viewModel)
+          tasarim.kisilerAdapter = adapter
+      }
 
-        val adapter = KisilerAdapter(requireContext(),kisilerListesi)
-        tasarim.kisilerAdapter = adapter
 
         requireActivity().addMenuProvider(object : MenuProvider{
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -54,6 +53,11 @@ class AnasayfaFragment : Fragment(),SearchView.OnQueryTextListener {
 
         return tasarim.root
     }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel : AnasayfaViewModel by viewModels()
+        viewModel = tempViewModel
+    }
     fun fabTikla(it:View){
         Navigation.findNavController(it).navigate(R.id.kisiKayıtGecis)
 
@@ -61,23 +65,20 @@ class AnasayfaFragment : Fragment(),SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextSubmit(query: String): Boolean {
-        ara(query)
+       viewModel.ara(query)
         return true
 
     }
 
     override fun onQueryTextChange(newText: String): Boolean {
-        ara(newText)
+        viewModel.ara(newText)
         return true
     }
-    fun ara(aramaKelimesi:String){
-        Log.e("Kişi Ara",aramaKelimesi)
 
-    }
 
     override fun onResume() {
         super.onResume()
-        Log.e("Kişi Anasayfa","Dönüldü")
+        viewModel.kisileriYukle()
     }
 }
 

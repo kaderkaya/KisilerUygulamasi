@@ -14,8 +14,11 @@ import com.kaderkayaarslan.kisileruygulamasi.databinding.CardTasarimBinding
 import com.kaderkayaarslan.kisileruygulamasi.databinding.FragmentAnasayfaBinding
 import com.kaderkayaarslan.kisileruygulamasi.ui.fragment.AnasayfaFragment
 import com.kaderkayaarslan.kisileruygulamasi.ui.fragment.AnasayfaFragmentDirections
+import com.kaderkayaarslan.kisileruygulamasi.ui.viewmodel.AnasayfaViewModel
 
-class KisilerAdapter(var mContext: Context,var kisilerListesi:List<Kişiler>)
+class KisilerAdapter(var mContext: Context,
+                     var kisilerListesi:List<Kişiler>,
+                     var viewModel: AnasayfaViewModel)
     : RecyclerView.Adapter<KisilerAdapter.CardTasarimTutucu>() {
     inner class CardTasarimTutucu(tasarim:CardTasarimBinding) : RecyclerView.ViewHolder(tasarim.root){
         var tasarim:CardTasarimBinding
@@ -45,8 +48,7 @@ class KisilerAdapter(var mContext: Context,var kisilerListesi:List<Kişiler>)
         t.imageViewSil.setOnClickListener {
             Snackbar.make(it,"${kisi.kisi_ad} silinsin mi?", Snackbar.LENGTH_LONG)
                 .setAction("EVET"){
-                    Log.e("Kişi Sil",kisi.kisi_id.toString())
-
+                   viewModel.sil(kisi.kisi_id)
                 }.show()
 
         }
