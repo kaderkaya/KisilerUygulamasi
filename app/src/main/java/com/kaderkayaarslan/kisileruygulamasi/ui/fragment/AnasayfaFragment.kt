@@ -80,5 +80,6 @@ class AnasayfaFragment : Fragment(),SearchView.OnQueryTextListener {
         super.onResume()
         viewModel.kisileriYukle()
     }
+
 }
 
