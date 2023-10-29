@@ -81,7 +81,6 @@ class AnasayfaFragment : Fragment(),SearchView.OnQueryTextListener {
         viewModel.kisileriYukle()
 
     }
-
 }
 
 
