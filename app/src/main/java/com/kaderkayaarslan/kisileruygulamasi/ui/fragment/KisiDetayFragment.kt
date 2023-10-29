@@ -42,5 +42,4 @@ class KisiDetayFragment : Fragment() {
           viewModel.guncelle(kisi_id,kisi_ad,kisi_tel)
     }
 
-
 }
