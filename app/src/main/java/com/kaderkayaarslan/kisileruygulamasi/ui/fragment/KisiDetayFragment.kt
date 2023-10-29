@@ -42,5 +42,6 @@ class KisiDetayFragment : Fragment() {
     fun buttonGuncelle(kisi_id:Int, kisi_ad: String,kisi_tel:String){
           viewModel.guncelle(kisi_id,kisi_ad,kisi_tel)
     }
+
     }
 
