@@ -32,6 +32,7 @@ class KisiDetayFragment : Fragment() {
         tasarim.kisiNesnesi = gelenKisi
 
         return tasarim.root
+
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
