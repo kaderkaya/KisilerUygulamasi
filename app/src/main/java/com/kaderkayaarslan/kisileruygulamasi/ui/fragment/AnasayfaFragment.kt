@@ -84,3 +84,4 @@ class AnasayfaFragment : Fragment(),SearchView.OnQueryTextListener {
 }
 
 
+
