@@ -18,6 +18,7 @@ import com.kaderkayaarslan.kisileruygulamasi.databinding.FragmentAnasayfaBinding
 import com.kaderkayaarslan.kisileruygulamasi.ui.adapter.KisilerAdapter
 import com.kaderkayaarslan.kisileruygulamasi.ui.viewmodel.AnasayfaViewModel
 import com.kaderkayaarslan.kisileruygulamasi.ui.viewmodel.KisiKayitViewModel
+import com.kaderkayaarslan.kisileruygulamasi.util.gecisYap
 
 
 class AnasayfaFragment : Fragment(),SearchView.OnQueryTextListener {
@@ -59,7 +60,7 @@ class AnasayfaFragment : Fragment(),SearchView.OnQueryTextListener {
         viewModel = tempViewModel
     }
     fun fabTikla(it:View){
-        Navigation.findNavController(it).navigate(R.id.kisiKayıtGecis)
+        Navigation.gecisYap(it,R.id.kisiKayıtGecis)
 
 
     }

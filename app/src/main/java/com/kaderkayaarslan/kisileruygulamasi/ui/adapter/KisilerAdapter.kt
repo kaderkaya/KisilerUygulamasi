@@ -15,6 +15,7 @@ import com.kaderkayaarslan.kisileruygulamasi.databinding.FragmentAnasayfaBinding
 import com.kaderkayaarslan.kisileruygulamasi.ui.fragment.AnasayfaFragment
 import com.kaderkayaarslan.kisileruygulamasi.ui.fragment.AnasayfaFragmentDirections
 import com.kaderkayaarslan.kisileruygulamasi.ui.viewmodel.AnasayfaViewModel
+import com.kaderkayaarslan.kisileruygulamasi.util.gecisYap
 
 class KisilerAdapter(var mContext: Context,
                      var kisilerListesi:List<Kişiler>,
@@ -42,7 +43,7 @@ class KisilerAdapter(var mContext: Context,
         t.kisiNesnesi = kisi
         t.satirCard.setOnClickListener {
             val gecis = AnasayfaFragmentDirections.kisiDetayGecis(kisi = kisi)
-            Navigation.findNavController(it).navigate(gecis)
+            Navigation.gecisYap(it,gecis)
         }
 
         t.imageViewSil.setOnClickListener {
