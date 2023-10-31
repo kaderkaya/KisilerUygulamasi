@@ -48,7 +48,7 @@
             android:layout_height="0dp"
             android:adapter="@{kisilerAdapter}"
             android:background="@color/white"
-            android:backgroundTint="@color/material_dynamic_neutral10"
+            android:backgroundTint="@color/material_dynamic_neutral70"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
