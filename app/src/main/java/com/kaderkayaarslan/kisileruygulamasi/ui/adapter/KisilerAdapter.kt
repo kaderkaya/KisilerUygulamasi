@@ -61,5 +61,4 @@ class KisilerAdapter(var mContext: Context,
 
 
 
-
 }
