@@ -59,4 +59,5 @@ class KisilerAdapter(var mContext: Context,
      return kisilerListesi.size
     }
 
+
 }
