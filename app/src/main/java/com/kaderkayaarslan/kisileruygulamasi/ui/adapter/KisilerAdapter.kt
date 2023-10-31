@@ -58,4 +58,5 @@ class KisilerAdapter(var mContext: Context,
     override fun getItemCount(): Int {
      return kisilerListesi.size
     }
+
 }
